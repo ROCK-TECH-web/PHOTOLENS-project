@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyPhotoLens | Gallery</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+
+
+    /* ===== Futuristic Gallery Styling ===== */
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px 20px;
+      background: linear-gradient(90deg, #00d4ff, #6a00ff);
+      color: #000;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      letter-spacing: 1.5px;
+    }
+
+      /* ===== Navbar Styling ===== */
+    nav {
+      position: absolute;
+      top: 10px;
+      right: 50px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      transition: 0.3s ease;
+      text-shadow: 0 0 5px rgba(0, 212, 255, 0.8);
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #00d4ff;
+      text-shadow: 0 0 15px #00d4ff, 0 0 25px #6a00ff;
+    }
+
+    .gallery-section {
+      padding: 60px 5%;
+    }
+
+    .gallery-section h2 {
+      font-size: 2rem;
+      color: #00d4ff;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #00d4ff;
+      display: inline-block;
+      padding-bottom: 5px;
+      letter-spacing: 1px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(0, 212, 255, 0.8);
+    }
+
+    /* ===== Lightbox ===== */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      padding-top: 80px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.95);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .lightbox-img {
+      max-width: 80%;
+      max-height: 80%;
+      border: 3px solid #00d4ff;
+      border-radius: 10px;
+      box-shadow: 0 0 25px rgba(0, 212, 255, 0.8);
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      color: #fff;
+      font-size: 40px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .close:hover {
+      color: #00d4ff;
+    }
+
+    #caption {
+      margin-top: 20px;
+      font-size: 1.1rem;
+      color: #00d4ff;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #111;
+      color: #bbb;
+      margin-top: 50px;
+      border-top: 1px solid #222;
+    }
+
+    footer a {
+      color: #00d4ff;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+    
+
+  <!-- ===== Header ===== -->
+  <header>
+    <h1>Photography Collections Gallery</h1>
+  </header>
+
+   <!-- ===== Header ===== -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="gallery.html" class="active">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== Wild-Life Collection ===== -->
+  <section class="gallery-section">
+    <h2>Wild-Life Collection</h2>
+    <div class="gallery-grid">
+      <img src="Images.jpg" alt="Wild-Life">
+      <img src="Images/wild life images gan gan.jpg" alt="Wild-Life 1">
+      <img src="Images/wild life 5.jpg" alt="Wild-Life 3">
+      <img src="Images/wild life 1.jpg" alt="Wild-Life 4">
+    </div>
+  </section>
+
+  <!-- ===== Night-Time collections ===== -->
+  <section class="gallery-section">
+    <h2>Night-Time collections</h2>
+    <div class="gallery-grid">
+      <img src="Images" alt="Night-Time">
+      <img src="Images/night time images 2.jpg" alt="Night-Time2">
+      <img src="Images/night time images 4.jpg" alt="Night-Time 3">
+      <img src="Images/night time images 5.jpg" alt="Night-Time 4">
+    </div>
+  </section>
+
+  <!-- ===== Events Collections ===== -->
+  <section class="gallery-section">
+    <h2>Events Collections</h2>
+    <div class="gallery-grid">
+      <img src="Images/events images.jpg" alt="Events Images">
+      <img src="Images/events images 2.jpg" alt="Events Images 2">
+      <img src="Images/events images 3.jpg" alt="Events Images 3">
+      <img src="Images/events images 5.jpg" alt="Events Images 4">
+    </div>
+  </section>
+
+  <!-- ===== Fine-Arts Collection ===== -->
+  <section class="gallery-section">
+    <h2>Fine-Arts  Collection</h2>
+    <div class="gallery-grid">
+      <img src="Images/fine art images.jpg" alt="Fine Art 1">
+      <img src="Images/fine art images 2.jpg" alt="Fine Art 2">
+      <img src="Images/fine art images 4.jpg" alt="Fine Art 3">
+      <img src="Images/fine art images 5.jpg" alt="Fine Art 4">
+    </div>
+  </section>
+
+    <!-- ===== Landscapes images Collections ===== -->
+  <section class="gallery-section">
+    <h2>Landscapes Collections</h2>
+    <div class="gallery-grid">
+      <img src="Images/landscapes images.jpg"alt="Landscapes images">
+      <img src="Images/landscapes images 1.jpg" alt="Landscapes images 2">
+      <img src="Images/landscapes images 4.jpg" alt="Landscapes images 3">
+      <img src="Images/landscapes images 2.jpg" alt="Landscapes images 4">
+    </div>
+  </section>
+
+
+  <!-- ===== Lightbox ===== -->
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-img" id="lightbox-img" alt="Expanded View">
+    <div id="caption"></div>
+  </div>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <p>&copy; 2025 MyPhotoLens. All Rights Reserved.</p>
+    <p>
+      Follow me:
+      <a href="#">Instagram</a> |
+      <a href="#">Facebook</a> |
+      <a href="#">Twitter</a> |
+      <a href="#">LinkedIn</a>
+    </p>
+  </footer>
+
+  <!-- ===== Lightbox Script ===== -->
+  <script>
+    const images = document.querySelectorAll('.gallery-grid img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const captionText = document.getElementById('caption');
+    const closeBtn = document.querySelector('.close');
+
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+        captionText.textContent = img.alt;
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyPhotoLens | Let's Work Together</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #050505;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ===== Header ===== */
+    header {
+      background: radial-gradient(circle at top, #6a00ff, #000);
+      color: #fff;
+      text-align: center;
+      padding: 80px 20px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      text-shadow: 0 0 20px #6a00ff, 0 0 40px #00d4ff;
+      animation: glow 3s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #6a00ff, 0 0 20px #00d4ff; }
+      to { text-shadow: 0 0 25px #00d4ff, 0 0 50px #6a00ff; }
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      color: #ddd;
+    }
+
+    /* ===== Navigation ===== */
+    nav {
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #00d4ff, #6a00ff);
+      transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover::after, 
+    nav ul li a.active::after {
+      width: 100%;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #00d4ff;
+    }
+
+    /* ===== Contact Section ===== */
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 50px;
+      padding: 80px 5%;
+    }
+
+    .contact-form, .contact-info {
+      background: rgba(20, 20, 20, 0.9);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+      width: 400px;
+      flex: 1;
+      transition: 0.3s ease;
+    }
+
+    .contact-form:hover, .contact-info:hover {
+      box-shadow: 0 0 50px rgba(106, 0, 255, 0.4);
+      transform: scale(1.02);
+    }
+
+    .contact-form h2, .contact-info h2 {
+      color: #00d4ff;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #00d4ff;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    form .input-group {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid #555;
+      color: #fff;
+      padding: 10px;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    form input:focus, form textarea:focus {
+      border-color: #00d4ff;
+    }
+
+    form label {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: #888;
+      font-size: 0.9rem;
+      pointer-events: none;
+      transition: 0.3s ease;
+    }
+
+    form input:focus + label,
+    form input:not(:placeholder-shown) + label,
+    form textarea:focus + label,
+    form textarea:not(:placeholder-shown) + label {
+      top: -15px;
+      font-size: 0.8rem;
+      color: #00d4ff;
+    }
+
+    form button {
+      background: linear-gradient(90deg, #00d4ff, #6a00ff);
+      border: none;
+      color: #fff;
+      font-weight: bold;
+      padding: 12px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      width: 100%;
+    }
+
+    form button:hover {
+      box-shadow: 0 0 25px #00d4ff;
+      transform: scale(1.05);
+    }
+
+    /* ===== Popup Message ===== */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    .popup-content {
+      background: rgba(20, 20, 20, 0.95);
+      padding: 40px 60px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 0 40px rgba(0, 212, 255, 0.7);
+      animation: fadeIn 0.5s ease;
+    }
+
+    .popup-content h3 {
+      color: #00d4ff;
+      margin-bottom: 10px;
+    }
+
+    .popup-content p {
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    .popup-content button {
+      background: linear-gradient(90deg, #00d4ff, #6a00ff);
+      border: none;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .popup-content button:hover {
+      box-shadow: 0 0 20px #00d4ff;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #111;
+      color: #bbb;
+      margin-top: 50px;
+      border-top: 1px solid #222;
+    }
+
+    footer a {
+      color: #00d4ff;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Navbar ===== -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== Header ===== -->
+  <header>
+    <h1>Let's Work Together</h1>
+    <p>Have a project or event in mind? I’d love to hear from you!</p>
+  </header>
+
+  <!-- ===== Contact Section ===== -->
+  <section class="contact-container">
+    <div class="contact-form">
+      <h2>Send a Message</h2>
+      <form id="contactForm">
+        <div class="input-group">
+          <input type="text" id="name" name="name" required placeholder=" ">
+          <label for="name">Your Full Name</label>
+        </div>
+
+        <div class="input-group">
+          <input type="email" id="email" name="email" required placeholder=" ">
+          <label for="email">Email Address</label>
+        </div>
+
+        <div class="input-group">
+          <textarea id="message" name="message" rows="4" required placeholder=" "></textarea>
+          <label for="message">Your Message</label>
+        </div>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+
+    <div class="contact-info">
+      <h2>Contact Details</h2>
+      <p><strong>Phone:</strong> +234 813 638 10077</p>
+      <p><strong>Email:</strong> georgeabisola3@gmail.com</p>
+      <p><strong>Address:</strong> Harmony street, FUNAAB Abeokuta, Ogun state</p>
+      <p>
+        <strong>Follow Me:</strong><br>
+        <a href="#">Instagram</a> | 
+        <a href="#">Facebook</a> | 
+        <a href="#">Twitter</a> | 
+        <a href="#">LinkedIn</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== Popup ===== -->
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <h3>Thank You!</h3>
+      <p>Your message has been sent successfully. I’ll get back to you soon.</p>
+      <button id="closePopup">Close</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 MyPhotoLens. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Handle form submission
+    const form = document.getElementById('contactForm');
+    const popup = document.getElementById('popup');
+    const closePopup = document.getElementById('closePopup');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // prevent form reload
+      popup.style.display = 'flex'; // show popup
+      form.reset(); // clear fields
+    });
+
+    closePopup.addEventListener('click', () => {
+      popup.style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>
